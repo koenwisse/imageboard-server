@@ -18,8 +18,6 @@ npx sequelize-cli seed:generate --name some-users
 
 ---
 
-MANUAL Week-3/day-2/Database-project-2
-
 A. SET UP PROJECT AND DATABASE
 B. RELATIONS.md (Karla)
 
@@ -67,6 +65,9 @@ Test the server in your browser. You should see Cannot GET / in the browser and 
    create postgreSQL instance in ElephantSQL https://customer.elephantsql.com/instance/create
    Modify the corresponding object and set your own PostgreSQl credentials: {dialect}://{username}:{password}@{host_url}:{PORT}/{db_name}
    Go to postico and if you put that url in host in Postico "node" it fills all details (password, etc.)
+
+GGPUSH
+
 10. Connect sequelize to postgres: npx sequelize-cli db:migrate
     you should get "Loaded config file.." etc in terminal 10. Set postgreSQL credentials to development object in config.json
     "development": {
@@ -110,6 +111,8 @@ $ npx sequelize-cli db:seed:undo:all
 
 $ npx sequelize-cli db:seed --seed 20191211110453-some-users
 $ npx sequelize-cli db:seed:undo --seed 20191211110453-some-users.js (.js at the end of the file required to be able to run)
+
+GGPUSH
 
 16. Let's set up a simple endpoint to get our data out of the server. We must install express as a dependency and set up one route. Run npm install express and create an index.js file in the root of your project
 17. Now try it out! Run node index.js and you can use httpie or your browser to test this endpoint.
