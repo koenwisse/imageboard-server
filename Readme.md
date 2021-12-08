@@ -26,42 +26,53 @@ B. RELATIONS.md (Karla)
 A. SET UP PROJECT AND DATABASE
 
 1. Set up project
-   npm init -y
-   git init
-   touch .gitignore
-   add node\*modules to .gitignore --> node_modules/
 2. Install sequelize --> npm install sequelize sequelize-cli
 3. Install library communication sequelize <-> postgres
    npm install pg
 4. initialize sequelize project --> npx sequelize-cli init
-5. Git initial commit
+5. Git initial commit:
    git add .
    git commit -m 'Initial commit, sequelize init'
 6. Create repo in your git account
 7. Push existing repo to your github
    git@github.com:koenwisse/Database-project-2.git
-   git git branch -M main
+   git branch -M main
    git push -u origin main
    check in your github if its there
    for every next push do
    for every next commit do: add, commit + message and ggpush
+
+   npm init -y
+   git init
+   touch .gitignore
+   add node modules to .gitignore --> node_modules/
+
+8. 1. set up server in index.js file on root
+
+const express = require("express");
+
+const PORT = process.env.PORT || 4000;
+
+// create the app (server)
+const app = express();
+
+// start the server
+app.listen(PORT, () => console.log(`I am listening on port, ${PORT}`));
+
+Test the server in your browser. You should see Cannot GET / in the browser and a message like Listening on :4000 in your terminal.
+
 8. a Generate Models & Migrations
    npx sequelize-cli model:generate --name user --attributes name:string,email:string,phone:integer,password:string
 9. b Connect to database -->
    create postgreSQL instance in ElephantSQL https://customer.elephantsql.com/instance/create
    Modify the corresponding object and set your own PostgreSQl credentials: {dialect}://{username}:{password}@{host_url}:{PORT}/{db_name}
    Go to postico and if you put that url in host in Postico "node" it fills all details (password, etc.)
-   /9. Connect sequelize to postgres: npx sequelize-cli db:migrate
-   you should get "Loaded config file.." etc in terminal
-10. Set postgreSQL credentials to development object in config.json
+10. Connect sequelize to postgres: npx sequelize-cli db:migrate
+    you should get "Loaded config file.." etc in terminal 10. Set postgreSQL credentials to development object in config.json
     "development": {
-    "url": "postgres://sialuzfd:hVxgAW_Yvvk4O32dvzqjqIM7b1rjVEo3@balarama.db.elephantsql.com:5432/sialuzfd",
-11. change in models/index.js "sequelize = new....." to "sequelize = new Sequelize(config.url, config)"
-    // \*\*\_DATABASE IS NOW SET UP\*\*\*
-12. Run "npx sequelize-cli db:migrate" and look in postico that tables are there
-13. Generate Seed files (for every model 1 seed file)
-    npx sequelize-cli seed:generate --name some-users
-14. Add test data, initial set of data is provided to a database, so for user.js use for example:
+    "url": "postgres://sialuzfd:hVxgAW_Yvvk4O32dvzqjqIM7b1rjVEo3@balarama.db.elephantsql.com:5432/sialuzfd", 11. change in models/index.js "sequelize = new....." to "sequelize = new Sequelize(config.url, config)"
+    // \*\*\_DATABASE IS NOW SET UP\*\*\* 12. Run "npx sequelize-cli db:migrate" and look in postico that tables are there 13. Generate Seed files (for every model 1 seed file)
+    npx sequelize-cli seed:generate --name some-users 14. Add test data, initial set of data is provided to a database, so for user.js use for example:
 
 module.exports = {
 up: async (queryInterface, Sequelize) => {
